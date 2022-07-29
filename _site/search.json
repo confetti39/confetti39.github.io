@@ -10,6 +10,18 @@
       "url"      : "/javascript/nodejs/2019/03/24/welcome-to-jekyll.html",
       "date"     : "2019-03-24 00:33:36 +0900",
       "content"     : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ..."
+    } ,
+  
+    {
+      "title"    : "[Jekyll] pages build and deployment error",
+      "title-lower"    : "[jekyll] pages build and deployment error",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "GithubJekyll",
+      "tags"     : "",
+      "url"      : "/github/jekyll/2019/03/23/pages-build-and-deployment-error.html",
+      "date"     : "2019-03-23 21:03:36 +0900",
+      "content"     : "지킬 테마를 사용해 깃허브 블로그를 세팅하는 과정 중 pages build and deployment 에러를 겪었다.해결 방법은 _config.yml에 있다.theme:remote_theme:이 부분을 주석처리하거나, 삭제하면 된다.다음과 같이 해결되었다."
     } 
   
 ]
