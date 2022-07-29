@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Jekyll] pages build and deployment error"
-date: 2019-03-23 21:03:36 +0900
+date: 2022-07-29 18:09:58 +0900
 categories: Github Jekyll
 ---
 
