@@ -1,56 +1,60 @@
-title: "Affiliates"
-email: wowthemesnet@gmail.com
-timezone: UTC
-baseurl: "https://confetti39.github.io/"
-permalink: "/:title/"
-logo: "assets/images/logo.png"
-favicon: "assets/images/favicon.ico"
-author: Sal
-paginate: 30
-disqus: "demowebsite"
-locale: en_us
-lang: en_us
-feed_items: 10
-feed_update_period: daily
-feed_update_frequency: 1
-markdown: kramdown
-kramdown:
-  syntax_highlighter_opts:
-    disable: true
+title: Your awesome title
+author: GitHub User
+email: your-email@domain.com
+description: > # this means to ignore newlines until "show_exerpts:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+show_excerpts: true # set to true to show excerpts on the homepage
+
+# Minima date format
+# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
 sass:
   sass_dir: _sass
-  style: :compressed
-ganalytics: UA-113961478-1
+plainwhite:
+  name: Adam Denisov
+  tagline: Developer. Designer
+  date_format: "%b %-d, %Y"
+  sitemap: true # set to true to generate sitemap.xml content
+  search: true # set to true to enable searchbar
+  dark_mode: true # set to true to add dark mode toggle
+  portfolio_image: "assets/portfolio.png" # the path from the base directory of the site to the image to display (no / at the start)
+  html_lang: "en" # set the lang attribute of the <html> tag for the pages. See here for a list of codes: https://www.w3schools.com/tags/ref_country_codes.asp
+  condensed_mobile:
+    #- home
+    - page
+    - post
+  # generate social links in footer
+  social_links:
+    twitter: samarsault
+    github:  samarsault
+    linkedIn: in/samarsault
+    #dribbble: jekyll
+    #flickr:   jekyll
+    #instagram: jekyll
+    #pinterest: jekyll
+    #youtube: jekyll
+    #facebook: jekyll
+    #soundcloud: jekyll
+    #telegram: jekyll
+    #gitlab: jekyll
+    #email: jekyll
 
-# Authors
-authors:
-  sal:
-    name: Sal
-    display_name: Sal
-    avatar: "assets/images/sal.png"
-    email: wowthemesnet@gmail.com
-    web: https://www.wowthemes.net/category/jekyll-themes/
-    twitter: https://twitter.com/wowthemesnet
-    description: "Author of Affiliates, a template available for WordPress, HTML, Ghost and Jekyll. You are currently previewing Jekyll template demo."
-  john:
-    name: John
-    display_name: John
-    avatar: "assets/images/john.png"
-    email: wowthemesnet@gmail.com
-    web: https://www.wowthemes.net/category/jekyll-themes/
-    twitter: https://twitter.com/wowthemesnet
-    description: "This is the author box. Write a short description of the author here. You are currently previewing Affiliates theme demo, a Jekyll template compatible with Github pages."
+    # Mastodon instances
+    # mastodon:
+    # - username: jekyll
+    #   instance: example.com
+    # - username: jekyll2
+    #   instance: example.com
 
-# Social
-social:
-  instagram: https://www.instagram.com/bootstrapstarter/
-  facebook: https://www.facebook.com/bootstrapstartercom-346329609045284
-  twitter: https://twitter.com/bstartercom
+# If you want to link only specific pages in your header, uncomment
+# this and add the path to the pages in order as they should show up
+#header_pages:
+# - about.md
 
-# Plugins
+# Build settings
+theme: plainwhite
+
 plugins:
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-archives
+#  - jekyll-feed
