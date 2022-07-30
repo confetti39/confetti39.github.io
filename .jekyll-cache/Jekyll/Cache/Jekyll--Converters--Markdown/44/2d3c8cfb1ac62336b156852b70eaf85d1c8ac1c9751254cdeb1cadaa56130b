@@ -1,0 +1,72 @@
+I"� <h1 id="호이스팅hoisting">호이스팅(Hoisting)</h1>
+
+<p>JavaScript에서 호이스팅(Hoisting)이란, 인터프리터가 변수와 함수의 메모리 공간을 선언 전에 미리 할당하는 것을 의미한다. <code class="language-plaintext highlighter-rouge">var</code>로 선언한 변수의 경우 호이스팅 시 <code class="language-plaintext highlighter-rouge">undefined</code>로 변수를 초기화한다. 반면 <code class="language-plaintext highlighter-rouge">let</code>과 <code class="language-plaintext highlighter-rouge">const</code>로 선언한 변수의 경우 호이스팅 시 변수를 초기화하지 않는다.</p>
+
+<p>호이스팅을 설명할 땐 주로 변수의 선언과 초기화를 분리한 후, 선언만 코드의 최상단으로 옮기는 것으로 설명하곤 한다. 따라서 변수를 정의하는 코드보다 사용하는 코드가 앞서 등장할 수 있다. 다만 선언과 초기화를 함께 수행하는 경우, 선언 코드까지 실행해야 변수가 초기화된 상태가 됨을 주의해야 한다.</p>
+
+<h2 id="예제">예제</h2>
+
+<p>JavaScript는 함수의 코드를 실행하기 전에 함수 선언에 대한 메모리부터 할당한다. 덕분에 함수를 호출하는 코드를 함수 선언보다 앞서 배치할 수 있다. 예를 들어,</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">catName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">제 고양이 이름은 </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">입니다</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">catName</span><span class="p">(</span><span class="dl">"</span><span class="s2">호랑이</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">// 결과: "제 고양이 이름은 호랑이입니다."</span>
+</code></pre></div></div>
+
+<p>위의 코드가 일반적으로 코드를 작성하는 순서라면, 함수를 선언하기 전에 먼저 호출했을 때의 예제는,</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">catName</span><span class="p">(</span><span class="dl">"</span><span class="s2">클로이</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">catName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">제 고양이 이름은 </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">입니다</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 결과: "제 고양이 이름은 호랑이입니다.</span>
+</code></pre></div></div>
+
+<p>함수 호출이 함수 자체보다 앞서 존재하지만, 그럼에도 불구하고 이 코드 역시 동작한다. 이것이 JavaScript에서 실행 맥락이 동작하는 방식이다.</p>
+
+<p>호이스팅은 다른 자료형과 변수에도 잘 작동한다. 변수를 선언하기 전에 먼저 초기화하고 사용할 수 있는 것이다.</p>
+
+<h2 id="선언만-호이스팅-대상">선언만 호이스팅 대상</h2>
+
+<p>JavaScript는 초기화를 제외한 선언만 호이스팅한다. 변수를 먼저 사용하고 그 후에 선언 및 초기화가 나타나면, 사용하는 시점의 변수는 기본 초기화 상태(<code class="language-plaintext highlighter-rouge">var</code> 선언 시 <code class="language-plaintext highlighter-rouge">undefined</code>, 그 외에는 초기화하지 않음)이다. 예를 들어,</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span> <span class="c1">// 호이스팅한 var 선언으로 인해 undefined 출력</span>
+<span class="kd">var</span> <span class="nx">num</span><span class="p">;</span> <span class="c1">// 선언</span>
+<span class="nx">num</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// 초기화</span>
+</code></pre></div></div>
+
+<p>반면, 다음 예제는 선언 없이 초기화만 존재한다. 따라서 호이스팅도 없고, 변수를 읽으려는 시도에서는 <code class="language-plaintext highlighter-rouge">ReferenceError</code> 예외가 발생한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span> <span class="c1">// ReferenceError</span>
+<span class="nx">num</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// 초기화</span>
+</code></pre></div></div>
+
+<p>다음은 호이스팅을 보이는 더 많은 예제이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 예제 1</span>
+<span class="c1">// y만 호이스팅 대상</span>
+
+<span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// x 초기화. x를 선언하지 않은 경우 선언. 그러나 명령문에 var가 없으므로 호이스팅이 발생하지 않음</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">y</span><span class="p">);</span> <span class="c1">// '1 undefined'</span>
+<span class="c1">//JavaScript는 선언만 호이스팅하므로, 윗줄의 y는 undefined</span>
+<span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// y를 선언하고 초기화</span>
+
+<span class="c1">// 예제 2</span>
+<span class="c1">// 호이스팅은 없지만, 변수 초기화는 (아직 하지 않은 경우) 변수 선언까지 병행하므로 변수를 사용할 수 있음</span>
+
+<span class="nx">a</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">크랜</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// a 초기화</span>
+<span class="nx">b</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">베리</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// b 초기화</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="dl">""</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span> <span class="c1">// '크랜베리'</span>
+</code></pre></div></div>
+
+<h2 id="let과-const-호이스팅"><code class="language-plaintext highlighter-rouge">let</code>과 <code class="language-plaintext highlighter-rouge">const</code> 호이스팅</h2>
+
+<p><code class="language-plaintext highlighter-rouge">let</code>과 <code class="language-plaintext highlighter-rouge">const</code>로 선언한 변수도 호이스팅 대상이지만, <code class="language-plaintext highlighter-rouge">var</code>와 달리 호이스팅 시 <code class="language-plaintext highlighter-rouge">undefined</code>로 변수를 초기화하지 않는다. 따라서 변수의 초기화를 수행하기 전에 읽는 코드가 먼저 나타나면 예외가 발생한다.</p>
+:ET

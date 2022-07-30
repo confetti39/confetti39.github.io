@@ -1,0 +1,2 @@
+I"S<p>JavaScript에서 호이스팅(Hoisting)이란, 인터프리터가 변수와 함수의 메모리 공간을 선언 전에 미리 할당하는 것을 의미한다. <code class="language-plaintext highlighter-rouge">var</code>로 선언한 변수의 경우 호이스팅 시 <code class="language-plaintext highlighter-rouge">undefined</code>로 변수를 초기화한다. 반면 <code class="language-plaintext highlighter-rouge">let</code>과 <code class="language-plaintext highlighter-rouge">const</code>로 선언한 변수의 경우 호이스팅 시 변수를 초기화하지 않는다.</p>
+:ET
